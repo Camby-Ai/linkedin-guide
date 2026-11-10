@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LinkedIn Manager Setup Guide &middot; CAMBY Ai</title>
+<meta name="description" content="Eleven free Claude skills that run a LinkedIn account, and the order to set them up in. Install with one paste, write your voice file, and nothing posts until you say yes.">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="camby-ai-logo-web.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CAMBY Ai">
+<meta property="og:title" content="LinkedIn Manager Setup Guide">
+<meta property="og:description" content="Eleven free Claude skills that run a LinkedIn account, and the order to set them up in. Install with one paste, write your voice file, and nothing posts until you say yes.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LinkedIn Manager Setup Guide">
+<meta name="twitter:description" content="Eleven free Claude skills that run a LinkedIn account, and the order to set them up in. Install with one paste, write your voice file, and nothing posts until you say yes.">
+</head>
+<body>
+<style>
+  /* Layout: single column, left-aligned. Gold hairline rules separate numbered
+     sections, mirroring the CAMBY Ai site's "01 / SECTION" structure. */
+  :root {
+    --bg:        #0B0D12;
+    --panel:     #12161E;
+    --panel-2:   #171C26;
+    --line:      #2A2E3A;
+    --line-gold: #4A3B1E;
+    --gold:      #D8AA57;
+    --gold-dim:  #8A6E38;
+    --text:      #F7F3EB;
+    --muted:     #A49B89;
+    --ink:       #17191D;
+    --font-head: Georgia, "Times New Roman", serif;
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-head); font-weight: normal; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.05; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(27px, 4.4vw, 40px); line-height: 1.15; letter-spacing: -0.01em; }
+  h3 { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.3; }
+  h1 em, h2 em { color: var(--gold); font-style: italic; }
+  p { margin: 0; }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+  .eyebrow .sep { color: var(--gold-dim); }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .masthead .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; padding-block: 18px;
+  }
+  .masthead img { width: 168px; height: auto; display: block; }
+  .masthead .tag {
+    font-size: 11px; letter-spacing: 0.19em; text-transform: uppercase;
+    color: var(--muted); border-left: 1px solid var(--line-gold); padding-left: 14px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero .wrap { padding-block: clamp(40px, 7vw, 76px); }
+  .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .lede { font-size: clamp(16px, 1.9vw, 18.5px); color: var(--muted); max-width: 54ch; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  .portrait { position: relative; min-width: 0; }
+  .portrait img { width: 100%; max-width: 100%; height: auto; display: block; border: 1px solid var(--line-gold); }
+  .portrait figcaption {
+    margin-top: 12px; font-size: 11px; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .portrait figcaption b { color: var(--gold); font-weight: normal; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fact { flex: 1 1 150px; min-width: 0; padding: 16px 18px 16px 0; }
+  .fact + .fact { border-left: 1px solid var(--line); padding-left: 18px; }
+  .fact dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .fact dd { margin: 5px 0 0; font-family: var(--font-head); font-size: 21px; color: var(--gold); }
+
+  /* ---------- sections ---------- */
+  section { border-top: 1px solid var(--line); }
+  section .wrap { padding-block: clamp(36px, 5.5vw, 62px); }
+  .sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .sec-body { display: flex; flex-direction: column; gap: 20px; max-width: 68ch; }
+  .sec-body p { color: var(--muted); }
+  .sec-body p strong { color: var(--text); font-weight: bold; }
+
+  /* ---------- timeline table ---------- */
+  .scroll-x { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 15px; }
+  caption {
+    text-align: left; font-size: 11px; letter-spacing: 0.17em; text-transform: uppercase;
+    color: var(--muted); padding-bottom: 12px;
+  }
+  th, td { text-align: left; padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
+  td.when { color: var(--gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.what { color: var(--text); }
+  td.note { color: var(--muted); font-size: 14px; }
+  tr.heavy td.when { color: var(--text); background: var(--panel-2); padding-left: 12px; }
+
+  /* ---------- steps ---------- */
+  .step { display: grid; grid-template-columns: 62px 1fr; gap: 0 22px; padding-block: 30px; border-top: 1px solid var(--line); }
+  .step:first-of-type { border-top: 0; }
+  .step-num { font-family: var(--font-head); font-size: 34px; color: var(--gold-dim); line-height: 1; padding-top: 4px; font-variant-numeric: tabular-nums; }
+  .step-body { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .step-body > p { color: var(--muted); max-width: 62ch; }
+  .step-body h3 em { color: var(--gold); font-style: italic; }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  ul.ticks li { position: relative; padding-left: 20px; color: var(--muted); max-width: 62ch; }
+  ul.ticks li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--gold); }
+  ul.ticks li b { color: var(--text); font-weight: bold; }
+
+  /* ---------- code ---------- */
+  .code { border: 1px solid var(--line); background: var(--panel); }
+  .code-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--panel-2);
+  }
+  .code-top span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .copy {
+    font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    background: transparent; color: var(--gold); border: 1px solid var(--line-gold);
+    padding: 5px 11px; cursor: pointer;
+  }
+  .copy:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .copy:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  pre { margin: 0; padding: 14px; overflow-x: auto; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; color: var(--text); }
+  pre .c { color: var(--gold-dim); }
+  code { font-family: var(--font-mono); font-size: 0.92em; color: var(--gold); }
+
+  /* ---------- callout ---------- */
+  .callout { border-left: 2px solid var(--gold); background: var(--panel); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .callout .k { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); }
+  .callout p { color: var(--muted); max-width: 62ch; }
+
+  /* ---------- guardrails ---------- */
+  .rails { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .rail { background: var(--bg); padding: 20px; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .rail dt { font-family: var(--font-head); font-size: 18px; color: var(--text); }
+  .rail dd { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .rail .val { color: var(--gold); font-family: var(--font-mono); font-size: 13px; }
+
+  /* ---------- cta ---------- */
+  .cta { background: var(--panel); border-top: 1px solid var(--line-gold); }
+  .cta .wrap { padding-block: clamp(40px, 6vw, 68px); display: flex; flex-direction: column; gap: 24px; }
+  .cta-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+  .contact { border: 1px solid var(--line-gold); padding: 22px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .contact .row { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .contact .row dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .contact .row dd { margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-width: 0; }
+  .contact .v { font-family: var(--font-mono); font-size: 14.5px; color: var(--gold); word-break: break-all; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  a:hover { border-bottom-color: var(--gold); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 34px; display: flex; flex-direction: column; gap: 18px; }
+  footer img.sig { width: 150px; height: auto; opacity: 0.85; }
+  footer p { font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+  .fine { font-size: 12px; color: var(--gold-dim); }
+
+  @media (max-width: 760px) {
+    .hero-grid, .cta-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 340px; }
+    .step { grid-template-columns: 1fr; gap: 12px; }
+    .step-num { font-size: 26px; padding-top: 0; }
+    .fact + .fact { border-left: 0; padding-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <img src="camby-ai-logo-web.png" alt="CAMBY Ai">
+    <div class="tag">LinkedIn Manager &middot; Setup Guide</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">00 <span class="sep">/</span> LinkedIn manager</p>
+      <h1>Eleven skills.<br><em>One folder.</em></h1>
+      <p class="lede">This is the set of Claude skills I run my LinkedIn on. One writes the post. One writes
+        comments for the posts you want to be seen under. One sorts the comments on your own posts into leads
+        and noise. One plans the week. <strong>Nothing posts by itself:</strong> every skill ends in text you
+        copy and paste.</p>
+      <p class="lede">The pack is <a href="https://github.com/avi691/linkedin-agent-skill">linkedin-agent-skill</a>
+        by Avi Grondin and Jake Schincariol, free under the MIT license. The skills are theirs. What follows is
+        the setup order and the weekly routine I use.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 <span class="sep">/</span> Before you start</p>
+      <h2>What you need.<br><em>It is a short list.</em></h2>
+    </div>
+    <div class="scroll-x">
+      <table>
+        <caption>What to have ready</caption>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">What</th><th scope="col">Note</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heavy">
+            <td class="when">Claude</td>
+            <td class="what">A Claude plan that includes Claude Code</td>
+            <td class="note">Claude Code runs all eleven skills and the humanizer's two scripts</td>
+          </tr>
+          <tr>
+            <td class="when">Your writing</td>
+            <td class="what">Three posts or emails that sound like you</td>
+            <td class="note">They become your voice file in step 2</td>
+          </tr>
+          <tr>
+            <td class="when">Time</td>
+            <td class="what">One paste to install, ten minutes on the voice file</td>
+            <td class="note">The voice file is where the time should go</td>
+          </tr>
+          <tr>
+            <td class="when">Not needed</td>
+            <td class="what">No API key, no signup, nothing connected to your LinkedIn account</td>
+            <td class="note">The skills write. You post</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sec-body" style="margin-top:22px">
+      <p>No Claude Code? You can paste a single skill file at the top of a normal Claude chat and it works as a
+        mode. You lose the humanizer's scripts that way, and the humanizer is the reason the rest is usable, so
+        Claude Code is worth setting up.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 <span class="sep">/</span> The setup</p>
+      <h2>Four steps.<br><em>In this order.</em></h2>
+    </div>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>Install the pack</h3>
+        <p>The fastest way is to let Claude do it. Open Claude Code and paste this.</p>
+        <div class="code">
+          <div class="code-top"><span>Paste into Claude</span><button class="copy" type="button">Copy</button></div>
+<pre>https://github.com/avi691/linkedin-agent-skill
+
+Install this skill, then confirm /li-post works.</pre>
+        </div>
+        <p>Or do it yourself in a terminal. This copies the eleven skill folders to where Claude Code looks for them.</p>
+        <div class="code">
+          <div class="code-top"><span>Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>git clone https://github.com/avi691/linkedin-agent-skill.git
+cp -r linkedin-agent-skill/skills/li-* ~/.claude/skills/</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>Write your voice file <em>before anything else</em></h3>
+        <p>Every skill reads one file: <code>~/.claude/linkedin/voice.md</code>. It says who you are, who you
+          write for, what you sell, the words you use and the words you would never use. The pack ships a
+          template.</p>
+        <div class="code">
+          <div class="code-top"><span>Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>mkdir -p ~/.claude/linkedin
+cp linkedin-agent-skill/templates/voice.md ~/.claude/linkedin/voice.md</pre>
+        </div>
+        <p>You can fill it in by hand. The better way is to hand Claude your own writing and let it do the first
+          pass, then correct what it got wrong.</p>
+        <div class="code">
+          <div class="code-top"><span>Paste into Claude, with three of your own posts</span><button class="copy" type="button">Copy</button></div>
+<pre>Write my voice.md from these three posts and save it to ~/.claude/linkedin/voice.md</pre>
+        </div>
+        <ul class="ticks">
+          <li><b>Be specific about the reader.</b> "Owners of HVAC companies with 5 to 20 trucks" beats "business owners".</li>
+          <li><b>Say what you sell in one sentence.</b> If you cannot, the posts will wander.</li>
+          <li><b>List the words you would never use.</b> This does more for the drafts than any amount of praise for the ones you like.</li>
+        </ul>
+        <div class="callout">
+          <span class="k">Why this is second</span>
+          <p>Skip it and every draft comes out sounding like everyone else's. Ten minutes here is the difference
+            between drafts you post and drafts you rewrite.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Write one post</h3>
+        <p>Give <code>/li-post</code> one raw idea. Something that happened this week works better than a topic.</p>
+        <div class="code">
+          <div class="code-top"><span>In Claude Code</span><button class="copy" type="button">Copy</button></div>
+<pre>/li-post why we text back every missed call inside a minute</pre>
+        </div>
+        <p>You get three hook options, one full draft, and a copy-ready block. Pick the hook that sounds like
+          something you would say out loud. Edit the draft once. It is your name on it.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h3>Run it through the humanizer</h3>
+        <p><code>/li-human</code> is two small scripts that run on your machine. The first strips what your
+          keyboard never types: invisible characters, em dashes, curly quotes, and a list of stock phrases. The
+          second scores what is left.</p>
+        <div class="code">
+          <div class="code-top"><span>In Claude Code</span><button class="copy" type="button">Copy</button></div>
+<pre>/li-human check this draft before I post it</pre>
+        </div>
+        <p>Or run the scripts directly from <code>~/.claude/skills/li-human/</code>.</p>
+        <div class="code">
+          <div class="code-top"><span>Terminal</span><button class="copy" type="button">Copy</button></div>
+<pre>python3 humanize.py draft.txt --report      # clean it, show every change
+python3 detect.py draft.txt                  # score it, five checks</pre>
+        </div>
+        <ul class="ticks">
+          <li><b>Burstiness.</b> How much your sentence lengths vary. Machines write even.</li>
+          <li><b>Specificity.</b> Numbers, names and concrete details per 100 words.</li>
+          <li><b>Slop density.</b> How many stock phrases are left.</li>
+          <li><b>Fingerprint.</b> Invisible characters, em dashes and curly quotes.</li>
+          <li><b>Voice.</b> Contractions, first person, and structural tells.</li>
+        </ul>
+        <div class="callout">
+          <span class="k">What the score is</span>
+          <p>These are local checks modelled on what detectors look for. They are not a detector, and they
+            cannot promise what one will say. Nobody can sell you "undetectable". What they do is catch the
+            things a reader notices too.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 <span class="sep">/</span> The week</p>
+      <h2>The routine.<br><em>What runs when.</em></h2>
+    </div>
+    <div class="sec-body">
+      <p>This is the order I run them in. The inbox comes first, because a person waiting on a reply is worth
+        more than a new post.</p>
+    </div>
+    <div class="scroll-x" style="margin-top:26px">
+      <table>
+        <caption>The eleven skills by cadence</caption>
+        <thead>
+          <tr><th scope="col">When</th><th scope="col">Skill</th><th scope="col">What you get</th></tr>
+        </thead>
+        <tbody>
+          <tr class="heavy">
+            <td class="when">Every day</td>
+            <td class="what"><code>/li-inbox</code></td>
+            <td class="note">Your inbox sorted into lead, recruiter, peer, ask and spam, with replies drafted</td>
+          </tr>
+          <tr>
+            <td class="when">Every day</td>
+            <td class="what"><code>/li-comment</code></td>
+            <td class="note">Paste a post you want to be seen under and get a comment that adds something. Never "Great post!"</td>
+          </tr>
+          <tr class="heavy">
+            <td class="when">Every day</td>
+            <td class="what"><code>/li-reply</code></td>
+            <td class="note">The comments under your own post sorted into lead, substance, peer, support and noise, answered in that order</td>
+          </tr>
+          <tr>
+            <td class="when">When you reach out</td>
+            <td class="what"><code>/li-dm</code></td>
+            <td class="note">The invite note, the first message, and two follow-ups</td>
+          </tr>
+          <tr>
+            <td class="when">Mon, Wed, Fri</td>
+            <td class="what"><code>/li-post</code></td>
+            <td class="note">One post per slot, humanized before you see it</td>
+          </tr>
+          <tr>
+            <td class="when">Sunday</td>
+            <td class="what"><code>/li-plan</code></td>
+            <td class="note">What to post, when to post it, and the 10 people to engage with</td>
+          </tr>
+          <tr>
+            <td class="when">Weekly</td>
+            <td class="what"><code>/li-audit</code></td>
+            <td class="note">What worked in what you already published, ranked by engagement rate, not impressions</td>
+          </tr>
+          <tr>
+            <td class="when">As needed</td>
+            <td class="what"><code>/li-carousel</code> <code>/li-repurpose</code> <code>/li-profile</code></td>
+            <td class="note">Document posts, one long piece into a week of posts, and a profile score out of 100 with rewrites</td>
+          </tr>
+          <tr>
+            <td class="when">Every draft</td>
+            <td class="what"><code>/li-human</code></td>
+            <td class="note">The last step before anything is pasted into LinkedIn</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout" style="margin-top:26px">
+      <span class="k">If you sell to other businesses</span>
+      <p>Watch <code>/li-reply</code>. It reads the thread under your post and tells you which commenters are
+        leads and which are noise, so the person worth a conversation does not get the same thank you as
+        everyone else.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 <span class="sep">/</span> Guardrails</p>
+      <h2>What it will not do <em>without you</em></h2>
+    </div>
+    <div class="sec-body" style="margin-bottom:24px">
+      <p>These are how the pack is built, not settings you have to remember to switch on.</p>
+    </div>
+    <dl class="rails">
+      <div class="rail">
+        <dt>Nothing posts without you</dt>
+        <dd>Every skill ends in a copy-ready block. You paste it.</dd>
+        <dd class="val">you post</dd>
+      </div>
+      <div class="rail">
+        <dt>Nothing connects to your account</dt>
+        <dd>No login, no API key, no browser extension.</dd>
+        <dd class="val">nothing to connect</dd>
+      </div>
+      <div class="rail">
+        <dt>Nothing is automated on LinkedIn</dt>
+        <dd>Automating the site breaks LinkedIn's User Agreement and gets accounts restricted. These skills never click anything.</dd>
+        <dd class="val">by design</dd>
+      </div>
+      <div class="rail">
+        <dt>Your drafts stay on your machine</dt>
+        <dd>The humanizer's two scripts run locally. Nothing is uploaded.</dd>
+        <dd class="val">local only</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">05 <span class="sep">/</span> If you get stuck</p>
+      <h2>Where people <em>actually get stuck</em></h2>
+    </div>
+    <div class="cta-grid">
+      <div class="sec-body">
+        <p>Almost nobody stalls on the install. They stall on the voice file, because writing down who you sell
+          to and what you sound like is harder than it looks. Then they stall in week three, when the novelty
+          is gone and the Monday post still has to go out.</p>
+        <p>The tool is free and stays free. If you would rather set it up with someone who runs it every day,
+          that is a conversation I am happy to have.</p>
+        <p><strong>Tell me what you sell and who buys it.</strong> I will tell you which skill to start with.</p>
+      </div>
+      <dl class="contact">
+        <div class="row">
+          <dt>Email</dt>
+          <dd><span class="v" id="v-email">mike@mikecamby.com</span>
+            <button class="copy" type="button" data-copy="mike@mikecamby.com">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Text</dt>
+          <dd><span class="v" id="v-phone">747.441.6578</span>
+            <button class="copy" type="button" data-copy="747.441.6578">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Book a time</dt>
+          <dd><a href="https://cal.com/mikecamby">cal.com/mikecamby</a></dd>
+        </div>
+        <div class="row">
+          <dt>The code</dt>
+          <dd><a href="https://github.com/avi691/linkedin-agent-skill">github.com/avi691/linkedin-agent-skill</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img class="sig" src="camby-signature-web.png" alt="Camby">
+    <p>This guide is CAMBY Ai's walkthrough of
+      <a href="https://github.com/avi691/linkedin-agent-skill">linkedin-agent-skill</a> by Avi Grondin and Jake
+      Schincariol, used under the MIT license. The skills are theirs. The setup order and the weekly routine
+      are mine.</p>
+    <p class="fine">CAMBY Ai &middot; AI solutions for local businesses &middot; Las Vegas, Nevada &middot; More revenue. Less costs.</p>
+    <p class="fine">Nothing here promises reach, replies or sales. Not affiliated with or endorsed by LinkedIn.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.dataset.copy;
+      if (!text) {
+        var block = btn.closest(".code");
+        var pre = block && block.querySelector("pre");
+        if (!pre) return;
+        text = pre.innerText.replace(/[ \t]*#.*$/gm, "").trim();
+      }
+      var done = function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = prev; }, 1400);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, function () { select(btn, text); });
+      } catch (e) {
+        select(btn, text);
+      }
+    });
+  });
+
+  function select(btn, text) {
+    var holder = btn.closest(".code") || btn.parentElement;
+    var target = holder && (holder.querySelector("pre") || holder.querySelector(".v"));
+    if (!target) return;
+    var range = document.createRange();
+    range.selectNodeContents(target);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    btn.textContent = "Select and copy";
+    setTimeout(function () { btn.textContent = "Copy"; }, 2200);
+  }
+</script>
+
+</body>
+</html>
