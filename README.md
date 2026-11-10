@@ -2,7 +2,7 @@
 
 The setup order and weekly routine CAMBY Ai uses to run LinkedIn with Claude skills.
 
-**Read the guide:** https://camby-ai.github.io/linkedin-guide/
+**Read the guide:** https://linkedin.mikecamby.com/
 
 ## Credit
 
